@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <body style="font-family: Georgia, serif; color: #2c2c2c; max-width: 600px; margin: 0 auto; padding: 40px;">
+
+    <div style="background-color: #2c3e2d; padding: 24px 32px; margin-bottom: 32px;">
+      <h1 style="color: white; font-size: 20px; margin: 0;">Fred F. Marshall Correspondence</h1>
+      <p style="color: #a8b89a; font-size: 13px; margin: 4px 0 0 0;">Wright State University Special Collections</p>
+    </div>
+
+    <h2 style="color: #2c3e2d;">Thank you for claiming a transcription item!</h2>
+
+    <p>Dear <%= @claimer_name %>,</p>
+
+    <p>Thank you for volunteering to transcribe a letter from the Fred F. Marshall Correspondence collection. Your contribution helps make these historical documents more accessible to researchers and the public.</p>
+
+    <div style="background-color: #f5f0e8; padding: 24px; border-left: 4px solid #c8a96e; margin: 24px 0;">
+      <p style="font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px 0;">Item Claimed</p>
+      <p style="font-size: 16px; color: #2c2c2c; margin: 0;"><strong><%= @item.title %></strong></p>
+      <p style="font-size: 13px; color: #666; margin: 8px 0 0 0;"><%= @item.description %></p>
+    </div>
+
+    <h3 style="color: #2c3e2d;">Transcription Guidelines</h3>
+    <ul style="font-size: 14px; line-height: 1.8; color: #444;">
+      <li>Transcribe exactly what you see, including original spelling and punctuation</li>
+      <li>Use [illegible] for words you cannot read</li>
+      <li>Use [?] after uncertain readings</li>
+      <li>Note any drawings or non-text elements in brackets</li>
+    </ul>
+
+    <p>You can view and transcribe the item here:</p>
+    <a href="http://localhost:3000/items/<%= @item.id %>" style="background-color: #2c3e2d; color: white; padding: 12px 24px; text-decoration: none; font-family: Arial, sans-serif; font-size: 14px; display: inline-block;">View Item</a>
+
+    <p style="margin-top: 32px; font-size: 13px; color: #888;">If you are unable to complete this transcription please release your claim so someone else can work on it.</p>
+
+    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e8e0d0;">
+      <p style="font-size: 12px; color: #aaa;">Fred F. Marshall Papers (MS-53) — Wright State University Special Collections & Archives</p>
+    </div>
+
+  </body>
+</html>
