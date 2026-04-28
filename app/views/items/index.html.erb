@@ -1,0 +1,51 @@
+<!-- HERO -->
+<section class="browse-hero">
+  <div class="browse-hero-text">
+    <h1>Fred F. Marshall Correspondence</h1>
+    <p>Help transcribe letters from the Fred F. Marshall Papers (MS-53) held at Wright State University Special Collections & Archives. Each transcription makes these historical documents more accessible and searchable.</p>
+    <p class="collection-source">Source: <a href="https://corescholar.libraries.wright.edu/special_ms53_correspondence/" target="_blank">CORE Scholar, Wright State University</a></p>
+  </div>
+</section>
+
+<!-- PROGRESS STATS -->
+<section class="stats-bar">
+  <div class="stat">
+    <span class="stat-number"><%= @total %></span>
+    <span class="stat-label">Total Items</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number"><%= @available %></span>
+    <span class="stat-label">Available</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number"><%= @in_progress %></span>
+    <span class="stat-label">In Progress</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number"><%= @completed %></span>
+    <span class="stat-label">Completed</span>
+  </div>
+</section>
+
+<!-- ITEMS GRID -->
+<section class="items-section">
+  <h2>BROWSE ITEMS</h2>
+  <div class="items-grid">
+    <% @items.each do |item| %>
+      <div class="item-card">
+        <div class="item-image">
+          <img src="<%= item.image_url %>" alt="<%= item.title %>">
+          <span class="status-badge <%= item.status %>">
+            <%= item.status.gsub("_", " ").capitalize %>
+          </span>
+        </div>
+        <div class="item-details">
+          <p class="item-collection"><%= item.collection %></p>
+          <h3><%= item.title %></h3>
+          <p class="item-description"><%= truncate(item.description, length: 120) %></p>
+          <a href="/items/<%= item.id %>" class="item-link">View & Transcribe →</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
