@@ -26,6 +26,7 @@
       </div>
 
       <div class="claim-section">
+
         <% if @item.status == "available" %>
           <div class="claim-form">
             <h4>Claim this item to transcribe it</h4>
@@ -60,18 +61,38 @@
               <% end %>
             </div>
           </div>
+
         <% elsif @item.status == "in_progress" && @item.claimed_by.present? %>
           <div class="claimed-info">
             <p class="claimed-by">Claimed by <strong><%= @item.claimed_by %></strong></p>
             <p class="claimed-at">Claimed on <%= @item.claimed_at.strftime("%B %d, %Y at %I:%M %p") %></p>
-            <%= form_with url: release_item_path(@item), method: :post do |f| %>
-              <%= f.submit "Release Claim", class: "btn-release" %>
-            <% end %>
+            <button class="btn-release" onclick="document.getElementById('release-modal').style.display='flex'">
+              Release Claim
+            </button>
           </div>
+          <div id="release-modal" class="modal-overlay" style="display:none;">
+            <div class="modal-box">
+              <button class="modal-close" onclick="document.getElementById('release-modal').style.display='none'">X</button>
+              <h3>Release This Claim</h3>
+              <p class="modal-item-title"><%= @item.title %></p>
+              <p style="font-size:14px; color:#666; font-family:Arial,sans-serif; margin-bottom:24px;">
+                Enter the admin password to release this claim and make it available again.
+              </p>
+              <%= form_with url: release_item_path(@item), method: :post do |f| %>
+                <div class="form-group">
+                  <%= f.label :admin_password, "Admin Password" %>
+                  <%= f.password_field :admin_password, placeholder: "Enter admin password", required: true %>
+                </div>
+                <%= f.submit "Confirm Release", class: "btn-submit" %>
+              <% end %>
+            </div>
+          </div>
+
         <% elsif @item.status == "completed" %>
           <div class="completed-info">
             <p>This item has been fully transcribed.</p>
           </div>
+
         <% end %>
       </div>
 
