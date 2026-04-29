@@ -5,7 +5,9 @@ class TranscriptionsController < ApplicationController
 
     if @transcription.save
       @item.update(status: "in_progress") if @item.status == "available"
-      redirect_to @item, notice: "Thank you! Your transcription has been submitted."
+      TranscriptionMailer.submitted(@transcription).deliver_now
+      TranscriptionMailer.confirmation(@transcription).deliver_now
+      redirect_to @item, notice: "Thank you! Your transcription has been submitted and a confirmation email has been sent."
     else
       redirect_to @item, alert: "Please fill in all fields before submitting."
     end
@@ -14,6 +16,6 @@ class TranscriptionsController < ApplicationController
   private
 
   def transcription_params
-    params.require(:transcription).permit(:content, :transcriber_name)
+    params.require(:transcription).permit(:content, :transcriber_name, :transcriber_email, :document)
   end
 end

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <body style="font-family: Georgia, serif; color: #2c2c2c; max-width: 600px; margin: 0 auto; padding: 40px;">
+
+    <div style="background-color: #2c3e2d; padding: 24px 32px; margin-bottom: 32px;">
+      <h1 style="color: white; font-size: 20px; margin: 0;">Thank You for Your Submission!</h1>
+      <p style="color: #a8b89a; font-size: 13px; margin: 4px 0 0 0;">Fred F. Marshall Correspondence — Wright State University</p>
+    </div>
+
+    <p>Dear <%= @transcription.transcriber_name %>,</p>
+
+    <p>Thank you for submitting a transcription for the Fred F. Marshall Correspondence collection. Your contribution helps make these historical documents more accessible to researchers and the public.</p>
+
+    <div style="background-color: #f5f0e8; padding: 24px; border-left: 4px solid #c8a96e; margin: 24px 0;">
+      <p style="font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px 0;">Item Transcribed</p>
+      <p style="font-size: 16px; color: #2c2c2c; margin: 0;"><strong><%= @item.title %></strong></p>
+    </div>
+
+    <h3 style="color: #2c3e2d;">Your Transcription</h3>
+    <div style="background-color: #fdfaf5; padding: 24px; border: 1px solid #e8e0d0; font-size: 14px; line-height: 1.8; white-space: pre-wrap;">
+      <%= @transcription.content %>
+    </div>
+
+    <p style="margin-top: 24px;">Our team will review your submission and may follow up if we have any questions.</p>
+
+    <p>Thank you again for your valuable contribution!</p>
+
+    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e8e0d0;">
+      <p style="font-size: 12px; color: #aaa;">Fred F. Marshall Papers (MS-53) — Wright State University Special Collections & Archives</p>
+    </div>
+
+  </body>
+</html>

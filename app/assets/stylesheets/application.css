@@ -689,3 +689,22 @@ footer {
   color: #888 !important;
   cursor: not-allowed;
 }
+
+/* =====================
+   FILE UPLOAD
+===================== */
+
+.upload-hint {
+  font-size: 12px;
+  color: #888;
+  font-family: Arial, sans-serif;
+  margin-bottom: 8px !important;
+  margin-top: 4px !important;
+}
+
+input[type="file"] {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: #444;
+  padding: 8px 0;
+}

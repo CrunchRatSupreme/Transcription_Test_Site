@@ -22,7 +22,7 @@
       <p class="item-description"><%= @item.description %></p>
 
       <div class="item-source">
-        <p>View original on <a href="<%= @item.source_url %>" target="_blank">CORE Scholar</a></p>
+        <p>View document on <a href="<%= @item.source_url %>" target="_blank">CORE Scholar</a></p>
       </div>
 
       <div class="claim-section">
@@ -102,8 +102,8 @@
 
 <!-- TRANSCRIPTION FORM -->
 <section class="transcription-section">
-  <h2>SUBMIT A TRANSCRIPTION</h2>
-  <p class="transcription-intro">Read the document image carefully and type out the full text below. Please transcribe exactly what you see, including any spelling or punctuation from the original.</p>
+  <h2>CONTACT US</h2>
+  <p class="transcription-intro">Ask a question or submit a transcription. If submitting a transcription, read the document image carefully and type out the full text in a Word document. Please transcribe exactly what you see, including any spelling or punctuation from the original.</p>
 
   <% if notice %>
     <div class="alert success"><%= notice %></div>
@@ -112,15 +112,25 @@
     <div class="alert error"><%= alert %></div>
   <% end %>
 
-  <%= form_with url: item_transcriptions_path(@item), method: :post do |f| %>
+  <%= form_with url: item_transcriptions_path(@item), method: :post, multipart: true do |f| %>
     <div class="form-group">
       <%= f.label :transcriber_name, "Your Name" %>
       <%= f.text_field :transcriber_name, placeholder: "Enter your name" %>
     </div>
     <div class="form-group">
-      <%= f.label :content, "Transcription" %>
-      <%= f.text_area :content, rows: 10, placeholder: "Type the full text of the document here..." %>
+      <%= f.label :transcriber_email, "Your Email" %>
+      <%= f.email_field :transcriber_email, placeholder: "Enter your email" %>
     </div>
+     <div class="form-group">
+      <%= f.label :document, "Upload Document" %>
+      <p class="upload-hint">You may upload a Word document or PDF of your transcription.</p>
+      <%= f.file_field :document, accept: ".pdf,.doc,.docx" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :content, "Message" %>
+      <%= f.text_area :content, rows: 10, placeholder: "Type your message here..." %>
+    </div>
+   
     <%= f.submit "Submit Transcription", class: "btn-submit" %>
   <% end %>
 </section>
