@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     @new_transcription = Transcription.new
   end
 
-  def claim
+ def claim
   @item = Item.find(params[:id])
   if @item.status == "available"
     @item.update(
@@ -24,7 +24,9 @@ class ItemsController < ApplicationController
       claimed_by: "#{params[:claimed_first_name]} #{params[:claimed_last_name]}",
       claimed_at: Time.now
     )
-    redirect_to @item, notice: "You have successfully claimed this item!"
+    
+    ClaimMailer.claim_notification(@item).deliver_now
+    redirect_to @item, notice: "You have successfully claimed this item! A confirmation email has been sent."
   else
     redirect_to @item, alert: "This item is no longer available to claim."
   end

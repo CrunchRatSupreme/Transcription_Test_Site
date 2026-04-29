@@ -6,8 +6,8 @@ class ClaimMailer < ApplicationMailer
 
     mail(
       to: @claimer_email,
-      bcc: "AlexisDWhitney@gmail.com",
-      from: "AlexisDWhitney@gmail.com",
+      bcc: "primrose.marigold@gmail.com",
+      from: "primrose.marigold@gmail.com",
       subject: "Your Transcription Claim: #{@item.title}"
     )
   end
